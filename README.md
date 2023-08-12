@@ -3,9 +3,7 @@
     <img src="https://github.com/mizzcode/kelas-maju/blob/dev/public/img/logo/kelasmaju-white.svg" width="150">
   </a>
 </p>
-
-<h1></h1>
-
+<hr>
 <span align="center">
     <b>KelasMaju</b> Adalah Sistem Manajemen Kelas untuk memberikan solusi inovatif yang mengintegrasikan potensi hebat dari <a href="https://laravel.com">Laravel</a> dan estetika modern dari <a href="https://github.com/stisla/stisla">Stisla</a> untuk mengatasi tantangan kompleks dalam pengelolaan kelas. Proyek ini dirancang untuk memberdayakan pendidik dan staff sekolah dengan alat yang diperlukan untuk mengelola, memonitor, dan memfasilitasi pengalaman belajar yang optimal.
 </span>
