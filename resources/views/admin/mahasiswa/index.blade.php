@@ -30,56 +30,22 @@
                 <th>Updated At</th>
                 <th>Action</th>
                 </tr>
+                @foreach ($mahasiswas as $mahasiswa)
                 <tr>
-                <td>1</td>
-                <td>Misbahudin</td>
-                <td>12345</td>
-                <td>Teknik Informatika</td>
-                <td><div class="badge badge-success">Active</div></td>
-                <td>2023-09-01</td>
-                <td>2023-09-01</td>
-                <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>Anjani Dewi Anugrah</td>
-                <td>12345</td>
-                <td>Graphic Designer</td>
-                <td><div class="badge badge-success">Active</div></td>
-                <td>2017-01-09</td>
-                <td>2018-01-09</td>
-                <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                </tr>
-                <tr>
-                <td>3</td>
-                <td>Kusnadi</td>
-                <td>12345</td>
-                <td>Teknik Informatika</td>
-                <td><div class="badge badge-danger">Not Active</div></td>
-                <td>2017-01-11</td>
-                <td>2017-01-11</td>
-                <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                </tr>
-                <tr>
-                <td>4</td>
-                <td>Rizal Fakhri</td>
-                <td>12345</td>
-                <td>Teknik Informatika</td>
-                <td><div class="badge badge-success">Active</div></td>
-                <td>2017-01-11</td>
-                <td>2017-01-11</td>
-                <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                </tr>
-                <tr>
-                <td>5</td>
-                <td>Isnap Kiswandi</td>
-                <td>12345</td>
-                <td>Teknik Informatika</td>
-                <td><div class="badge badge-success">Active</div></td>
-                <td>2017-01-17</td>
-                <td>2017-01-17</td>
-                <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                </tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$mahasiswa->name}}</td>
+                    <td>{{$mahasiswa->nim}}</td>
+                    <td>{{$mahasiswa->jurusan}}</td>
+                    @if ($mahasiswa->status == "active")
+                    <td><div class="badge badge-success">Active</div></td>
+                    @else
+                    <td><div class="badge badge-danger">Not Active</div></td>
+                    @endif
+                    <td>{{$mahasiswa->created_at}}</td>
+                    <td>{{$mahasiswa->updated_at}}</td>
+                    <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                    </tr>
+                @endforeach
             </table>
             </div>
         </div>

@@ -4,7 +4,7 @@
 
   <!-- CSS Libraries -->
 
-  @yield('css')
+  @yield("css")
   
   <!-- Template CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
