@@ -29,11 +29,7 @@ DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-5. Jalankan symbolic link untuk load asseets yang dibutuhkan
-```bash
-php artisan storage:link
-```
-6. Jalankan website
+5. Jalankan website
 ```bash
 php artisan serve
 ```
