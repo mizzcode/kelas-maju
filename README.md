@@ -38,7 +38,7 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-## User Account
+## Admin Account
 - Email : mizz@gmail.com
 - Password : mizz
 
