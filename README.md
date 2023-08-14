@@ -29,10 +29,18 @@ DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-5. Jalankan website
+5. Jalankan Migration & Seeder
+```bash
+php artisan migrate --seed
+```
+6. Jalankan website
 ```bash
 php artisan serve
 ```
+
+## User Account
+- Email : mizz@gmail.com
+- Password : mizz
 
 ## License
 
