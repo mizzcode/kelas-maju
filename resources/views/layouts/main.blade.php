@@ -25,15 +25,13 @@
             @yield('content-body')
           </div>
         </section>
+        @yield("modal")
       </div>
       {{-- Footer --}}
       @include('layouts.footer')
     </div>
   </div>
-
+  {{-- Script Js --}}
   @include('layouts.footer-script')
-  <!-- JS Libraies -->
-
-  <!-- Page Specific JS File -->
 </body>
 </html>

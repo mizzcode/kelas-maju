@@ -12,7 +12,7 @@ class Mahasiswa extends Model
 
     protected $table = "mahasiswas";
 
-    protected $fillable = ["name", "email", "nim", "jurusan", "status", "user_id"];
+    protected $fillable = ["name", "nim", "jurusan", "status", "user_id"];
 
     public function uniqueIds()
     {

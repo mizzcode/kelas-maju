@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MahasiswaController extends Controller
 {
@@ -13,10 +14,8 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswas = Mahasiswa::all();
-
         return view("admin.mahasiswa.index", [
-            "mahasiswas" => $mahasiswas
+            "mahasiswas" => Mahasiswa::all()
         ]);
 
     }
@@ -56,9 +55,20 @@ class MahasiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $mahasiswa = Mahasiswa::query()->findOrFail($request->mahasiswa_id);
+
+        $validatedData = $this->validate($request, [
+            "name" => "required|50",
+            "nim" => "required|50|integer",
+            "jurusan" => "required",
+            "status" => "required",
+        ]);
+
+        $validatedData["user_id"] = Auth::user()->id;
+
+        $mahasiswa->update($validatedData);
     }
 
     /**

@@ -3,7 +3,7 @@
     @section("title", "Login Page")
 
     @section("css")
-    <link rel="stylesheet" href="{{asset("storage/assets/library/bootstrap-social/bootstrap-social.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/library/bootstrap-social/bootstrap-social.css")}}">
     @endsection
 
     @section("content")
@@ -17,6 +17,7 @@
 
             <div class="card-body">
                 <form method="POST" action="{{route("login")}}" class="needs-validation" novalidate="">
+                @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>

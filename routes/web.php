@@ -22,6 +22,4 @@ Route::get('/', function () {
 Route::get("/login", [LoginController::class, "index"])->name("login");
 Route::post("/login", [LoginController::class, "login"])->name("login");
 
-Route::prefix('admin')->middleware("auth")->group(function () {
-    Route::resource('/mahasiswa', MahasiswaController::class);
-});
+Route::resource("admin/mahasiswa", MahasiswaController::class)->middleware("auth")->names("mahasiswa");

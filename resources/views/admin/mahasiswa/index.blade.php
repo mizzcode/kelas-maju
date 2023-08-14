@@ -2,6 +2,10 @@
 
 @section('title', "Mahasiswa | KelasMaju")
 
+@section("css")
+<link rel="stylesheet" href="{{asset("assets/library/prismjs/themes/prism.css")}}">
+@endsection
+
 @section('content-header')
 <h1>Mahasiswa</h1>
 <div class="section-header-breadcrumb">
@@ -10,7 +14,7 @@
 </div>
 @endsection
 
-@section('content-body')
+@section('content-body') 
     <div class="col-md-6 col-lg-12">
         <div class="card">
         <div class="card-header">
@@ -36,14 +40,14 @@
                     <td>{{$mahasiswa->name}}</td>
                     <td>{{$mahasiswa->nim}}</td>
                     <td>{{$mahasiswa->jurusan}}</td>
-                    @if ($mahasiswa->status == "active")
+                    @if ($mahasiswa->status == "Active")
                     <td><div class="badge badge-success">Active</div></td>
                     @else
                     <td><div class="badge badge-danger">Not Active</div></td>
                     @endif
                     <td>{{$mahasiswa->created_at}}</td>
                     <td>{{$mahasiswa->updated_at}}</td>
-                    <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                    <td><button type="button" class="btn btn-secondary" data-id="{{$mahasiswa->id}}" data-name="{{$mahasiswa->name}}" data-nim="{{$mahasiswa->nim}}" data-jurusan="{{$mahasiswa->jurusan}}" data-status="{{$mahasiswa->status}}" data-created_at="{{$mahasiswa->created_at}}" data-updated_at="{{$mahasiswa->updated_at}}" data-toggle="modal" data-target="#detailModel">Detail</button></td>
                     </tr>
                 @endforeach
             </table>
@@ -68,4 +72,41 @@
         </div>
         </div>
     </div>
+@endsection
+
+@section("modal")
+<div class="modal fade" tabindex="-1" role="dialog" id="detailModel">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Mahasiswa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        {{-- param ke 2 dari route itu cuma dummy agar tidak eror, karena kita ambil id nya dari input hidden untuk id--}}
+        <form action="{{route("mahasiswa.update", "dummy")}}" method="POST">
+        @csrf
+        @method("PUT")
+            <div class="modal-body">
+                <input type="hidden" name="mahasiswa_id" id="id">
+                @include("admin.mahasiswa.form")
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+@endsection
+
+@section("libjs")
+<script src="{{asset("assets/library/prismjs/prism.js")}}"></script>
+@endsection
+
+{{-- jQuery untuk ambil data mahasiswa dan mengirim ke modal body --}}
+@section("js")
+<script src="{{asset("assets/js/page/bootstrap-modal.js")}}"></script>
 @endsection
