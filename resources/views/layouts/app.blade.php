@@ -15,5 +15,7 @@
             </div>
         </div>
     </div>
+    {{-- SweetAlert2 --}}
+    @include('sweetalert::alert')
 </body>
 </html>

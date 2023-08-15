@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,25 +58,37 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request)
     {
-        $mahasiswa = Mahasiswa::query()->findOrFail($request->mahasiswa_id);
+        try {
+            $mahasiswa = Mahasiswa::query()->findOrFail($request->mahasiswa_id);
+    
+            $mahasiswa->name = $request->name;
+            $mahasiswa->nim = $request->nim;
+            $mahasiswa->jurusan = $request->jurusan;
+            $mahasiswa->status = $request->status;
 
-        $validatedData = $this->validate($request, [
-            "name" => "required|50",
-            "nim" => "required|50|integer",
-            "jurusan" => "required",
-            "status" => "required",
-        ]);
-
-        $validatedData["user_id"] = Auth::user()->id;
-
-        $mahasiswa->update($validatedData);
+            // untuk mengetahui yang update data itu siapa
+            $mahasiswa->user_id = Auth::user()->id;
+            $mahasiswa->save();
+    
+            return redirect()->route("mahasiswa.index")->with("successUpdateMahasiswa", "Data Mahasiswa Berhasil Di Update.");
+        } catch (QueryException $e) {
+            return back()->with("errorUpdateMahasiswa", "Gagal memperbarui data: " . $e->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $mahasiswa = Mahasiswa::query()->findOrFail($request->mahasiswa_id);
+
+            $mahasiswa->delete();
+
+            return redirect()->route("mahasiswa.index")->with("successDeleteMahasiswa", "Data Mahasiswa Berhasil Di Delete.");
+        } catch (QueryException $e) {
+            return back()->with("errorDeleteMahasiswa", "Gagal menghapus data: " . $e->getMessage());
+        }
     }
 }
