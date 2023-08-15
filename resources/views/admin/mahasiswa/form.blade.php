@@ -3,23 +3,23 @@
         <div class="form-row">
             <div class="form-group col-md-6">
             <label for="name">NAME</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" id="name" name="name">
             </div>
             <div class="form-group col-md-6">
                 <label for="nim">NIM</label>
-                <input type="number" class="form-control" id="nim">
+                <input type="number" class="form-control" id="nim" name="nim">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
             <label for="jurusan">JURUSAN</label>
-            <input type="text" class="form-control" id="jurusan">
+            <input type="text" class="form-control" id="jurusan" name="jurusan">
             </div>
             <div class="form-group col-md-4">
             <label for="status">STATUS</label>
-            <select id="status" class="form-control">
-                <option value="1">Active</option>
-                <option value="0">Non Active</option>
+            <select id="status" class="form-control" name="status">
+                <option value="Active">Active</option>
+                <option value="Not Active">Not Active</option>
             </select>
             </div>
         </div>

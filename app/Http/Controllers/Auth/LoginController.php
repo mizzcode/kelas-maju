@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route("dashboard")->with("success", "Berhasil Login");
+            return redirect()->route("dashboard")->with("login", "Selamat Datang!");
         } else {
             return back()->with("error", "Email atau Password salah");
         }

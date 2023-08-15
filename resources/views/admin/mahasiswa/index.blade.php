@@ -84,8 +84,9 @@
             <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        {{-- param ke 2 dari route itu cuma dummy agar tidak eror, karena kita ambil id nya dari input hidden untuk id--}}
-        <form action="{{route("mahasiswa.update", "dummy")}}" method="POST">
+        {{-- param ke 2 dari route itu cuma data fake agar method update di controller tidak eror, 
+            karena kita kirim id nya dari input hidden id dan value id ini di ambil lewat javascript--}}
+        <form action="{{route("mahasiswa.update", "fake")}}" method="POST">
         @csrf
         @method("PUT")
             <div class="modal-body">
@@ -93,8 +94,17 @@
                 @include("admin.mahasiswa.form")
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Delete</button>
                 <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+        {{-- param ke 2 dari route itu cuma data fake agar method destroy di controller tidak eror, 
+            karena kita kirim id nya dari input hidden id dan value id ini di ambil lewat javascript--}}
+        <form action="{{route("mahasiswa.destroy", "fake")}}" method="post">
+        @csrf
+        @method("DELETE")
+            <div class="modal-body">
+                <input type="hidden" name="mahasiswa_id" id="id">
+                <button type="submit" class="btn btn-danger mt-0">Delete</button>
             </div>
         </form>
     </div>
@@ -106,7 +116,7 @@
 <script src="{{asset("assets/library/prismjs/prism.js")}}"></script>
 @endsection
 
-{{-- jQuery untuk ambil data mahasiswa dan mengirim ke modal body --}}
+{{-- jQuery untuk ambil data mahasiswa dan mengirim ke class modal-body --}}
 @section("js")
 <script src="{{asset("assets/js/page/bootstrap-modal.js")}}"></script>
 @endsection

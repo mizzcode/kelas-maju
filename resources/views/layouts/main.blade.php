@@ -27,11 +27,13 @@
         </section>
         @yield("modal")
       </div>
-      {{-- Footer --}}
-      @include('layouts.footer')
     </div>
+    {{-- Footer --}}
+    @include('layouts.footer')
   </div>
   {{-- Script Js --}}
   @include('layouts.footer-script')
+  {{-- SweetAlert2 --}}
+  @include('sweetalert::alert')
 </body>
 </html>

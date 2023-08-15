@@ -12,6 +12,8 @@ class Mahasiswa extends Model
 
     protected $table = "mahasiswas";
 
+    protected $keyType = "string";
+
     protected $fillable = ["name", "nim", "jurusan", "status", "user_id"];
 
     public function uniqueIds()
