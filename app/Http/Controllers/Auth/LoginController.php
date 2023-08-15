@@ -26,6 +26,7 @@ class LoginController extends Controller
 
             return redirect()->route("dashboard")->with("login", "Selamat Datang!");
         } else {
+            // tiba-tiba tidak berfungsi
             return back()->with("errorLogin", "Email atau Password salah");
         }
     }
