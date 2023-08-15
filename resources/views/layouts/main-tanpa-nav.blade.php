@@ -18,6 +18,7 @@
 
     @include('layouts.footer-script')
 
-    <!-- Page Specific JS File -->
+    {{-- SweetAlert2 --}}
+    @include('sweetalert::alert')
     </body>
     </html>

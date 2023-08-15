@@ -25,6 +25,7 @@ class Controller extends BaseController
             if (session('successDeleteMahasiswa')) {
                 Alert::success("Berhasil Hapus", session("successDeleteMahasiswa"));
             }
+
             if (session('errorDeleteMahasiswa')) {
                 Alert::error("Gagal Hapus", session("errorDeleteMahasiswa"));
             }
@@ -32,6 +33,11 @@ class Controller extends BaseController
             if (session('login')) {
                 Alert::success("Berhasil Login", session('login'));
             }
+
+            if (session('errorLogin')) {
+                Alert::error("Gagal Login", session('errorLogin'));
+            }
+
             if (session('logout')) {
                 Alert::success("Berhasil Logout", session('logout'));
             }
