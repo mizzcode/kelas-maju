@@ -22,6 +22,11 @@
         </div>
         <div class="card-body p-0">
             <p class="px-4">Berikut adalah daftar seluruh mahasiswa</p>
+            {{-- id add akan di tangkap jqeury untuk membuat modal
+                cek di bootstrap-modal.js --}}
+            <div class="m-3 d-flex align-items-center justify-content-end">
+                <button class="btn btn-success" id="add">Add Mahasiswa</button>
+            </div>
             <div class="table-responsive">
                 <table class="table table-striped table-md">
                 <tr>
@@ -47,7 +52,12 @@
                     @endif
                     <td>{{$mahasiswa->created_at}}</td>
                     <td>{{$mahasiswa->updated_at}}</td>
-                    <td><button type="button" class="btn btn-secondary" data-id="{{$mahasiswa->id}}" data-name="{{$mahasiswa->name}}" data-nim="{{$mahasiswa->nim}}" data-jurusan="{{$mahasiswa->jurusan}}" data-status="{{$mahasiswa->status}}" data-created_at="{{$mahasiswa->created_at}}" data-updated_at="{{$mahasiswa->updated_at}}" data-toggle="modal" data-target="#detailModel">Detail</button></td>
+                    <td>
+                        <button class="btn btn-info" data-id="{{$mahasiswa->id}}" data-name="{{$mahasiswa->name}}" data-nim="{{$mahasiswa->nim}}" 
+                            data-jurusan="{{$mahasiswa->jurusan}}" data-status="{{$mahasiswa->status}}" data-created_at="{{$mahasiswa->created_at}}" 
+                            data-updated_at="{{$mahasiswa->updated_at}}" data-toggle="modal" data-target="#detailModel">Detail
+                        </button>
+                    </td>
                     </tr>
                 @endforeach
             </table>

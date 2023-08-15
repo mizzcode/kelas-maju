@@ -1,3 +1,9 @@
+'use strict';
+// modal create mahasiswa
+$("#add").fireModal({
+  title: 'Create a New Mahasiswa',
+  body: 'Modal body text goes here.'
+});
 
 // modal untuk mahasiswa
 $("#detailModel").on("show.bs.modal", function (event) {
