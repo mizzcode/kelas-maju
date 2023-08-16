@@ -12,6 +12,6 @@ class LogoutController extends Controller
         // menghapus sesi pengguna
         Auth::logout();
 
-        return redirect()->route("home")->with("logout", "Sampai Jumpa~~");
+        return redirect()->route("home")->with("logout", "Berhasil Logout");
     }
 }

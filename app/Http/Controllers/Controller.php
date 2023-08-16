@@ -14,26 +14,40 @@ class Controller extends BaseController
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
+            if (session('successCreateMahasiswa')) {
+                Alert::success("Success", session("successCreateMahasiswa"));
+            }
+
+            if (session('errorCreateMahasiswa')) {
+                Alert::error("Error", session("errorCreateMahasiswa"));
+            }
+
             if (session('successUpdateMahasiswa')) {
-                Alert::success("Berhasil Update", session("successUpdateMahasiswa"));
+                Alert::success("Success", session("successUpdateMahasiswa"));
             }
 
             if (session('errorUpdateMahasiswa')) {
-                Alert::error("Gagal Update", session("errorUpdateMahasiswa"));
+                Alert::error("Error", session("errorUpdateMahasiswa"));
             }
 
             if (session('successDeleteMahasiswa')) {
-                Alert::success("Berhasil Hapus", session("successDeleteMahasiswa"));
+                Alert::success("Success", session("successDeleteMahasiswa"));
             }
+
             if (session('errorDeleteMahasiswa')) {
-                Alert::error("Gagal Hapus", session("errorDeleteMahasiswa"));
+                Alert::error("Error", session("errorDeleteMahasiswa"));
             }
 
             if (session('login')) {
-                Alert::success("Berhasil Login", session('login'));
+                Alert::success("Success", session('login'));
             }
+
+            if (session('errorLogin')) {
+                Alert::error("Error", session('errorLogin'));
+            }
+
             if (session('logout')) {
-                Alert::success("Berhasil Logout", session('logout'));
+                Alert::success("Success", session('logout'));
             }
 
             return $next($request);
