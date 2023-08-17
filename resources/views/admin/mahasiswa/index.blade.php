@@ -51,6 +51,7 @@
                     @endif
                     <td>{{$mahasiswa->created_at}}</td>
                     <td>
+                        <a href="{{ route('mahasiswa.destroy', $mahasiswa->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
                         <button class="btn btn-info" data-id="{{$mahasiswa->id}}" data-name="{{$mahasiswa->name}}" data-nim="{{$mahasiswa->nim}}" 
                             data-jurusan="{{$mahasiswa->jurusan}}" data-status="{{$mahasiswa->status}}" data-created_at="{{$mahasiswa->created_at}}" 
                             data-updated_at="{{$mahasiswa->updated_at}}" data-toggle="modal" data-target="#detailModel">Detail
@@ -61,22 +62,8 @@
             </table>
             </div>
         </div>
-        <div class="card-footer text-right">
-            <nav class="d-inline-block">
-            <ul class="pagination mb-0">
-                <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li class="page-item">
-                <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                </li>
-            </ul>
-            </nav>
+        <div class="d-flex justify-content-center align-items-center">
+            {{$mahasiswas->links()}}
         </div>
         </div>
     </div>
@@ -187,17 +174,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-            {{-- form untuk delete --}}
-            {{-- param ke 2 dari route itu cuma data fake agar method destroy di controller tidak eror, 
-                karena kita kirim id nya dari input hidden id dan value id ini di ambil lewat javascript--}}
-            <form action="{{route("mahasiswa.destroy", "fake")}}" method="post">
-            @csrf
-            @method("DELETE")
-                <div class="modal-body">
-                    <input type="hidden" name="mahasiswa_id" id="id">
-                    <button type="submit" class="btn btn-danger mt-0">Delete</button>
                 </div>
             </form>
         </div>
