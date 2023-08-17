@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
@@ -24,5 +25,8 @@ class AppServiceProvider extends ServiceProvider
         DB::listen(function($query) {
             Log::info("Query : " . $query->sql);
         });
+
+        // view paginate
+        Paginator::useBootstrapFour();
     }
 }
