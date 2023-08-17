@@ -16,8 +16,14 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
+        $mahasiswas = Mahasiswa::query()->latest()->paginate(5);
+
+        $title = "Delete User!";
+        $text = "Are you sure yout want to delete?";
+        confirmDelete($title, $text);
+
         return view("admin.mahasiswa.index", [
-            "mahasiswas" => Mahasiswa::all()
+            "mahasiswas" => $mahasiswas,
         ]);
     }
 
@@ -76,11 +82,11 @@ class MahasiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request)
+    public function destroy(string $id)
     {
         try {
-            $mahasiswa = Mahasiswa::query()->findOrFail($request->mahasiswa_id);
-
+            $mahasiswa = Mahasiswa::query()->findOrFail($id);
+            
             $mahasiswa->delete();
 
             return redirect()->route("mahasiswa.index")->with("successDeleteMahasiswa", "Data Mahasiswa Berhasil Di Delete.");
