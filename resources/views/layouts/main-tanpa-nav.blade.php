@@ -12,6 +12,7 @@
         <section class="section">
         <div class="container">
             @yield("content")
+            @include('layouts.footer')
         </div>
         </section>
     </div>
