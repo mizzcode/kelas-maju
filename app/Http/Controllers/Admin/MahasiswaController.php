@@ -19,7 +19,7 @@ class MahasiswaController extends Controller
         $mahasiswas = Mahasiswa::query()->latest()->paginate(5);
 
         $title = "Delete User!";
-        $text = "Are you sure yout want to delete?";
+        $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
         return view("admin.mahasiswa.index", [
