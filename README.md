@@ -1,10 +1,10 @@
 <p align="center">
-  <a href="https://laravel.com/">
+  <a href="https://github.com/mizzcode/kelas-maju">
     <img src="https://github.com/mizzcode/kelas-maju/blob/dev/public/assets/img/logo/kelasmaju-white.svg" width="150">
   </a>
 </p>
 <span align="center">
-    <img width="960" alt="image" src="https://github.com/mizzcode/kelas-maju/assets/101040281/776227a4-bff6-4328-b65b-a09cd5bd6842">
+    <img width="959" alt="image" src="https://github.com/mizzcode/kelas-maju/assets/101040281/7207d6f9-e573-43d6-a030-670d5fc26f3e">
 <hr>
     <b>KelasMaju</b> Adalah Sistem Manajemen Kelas untuk memberikan solusi inovatif yang mengintegrasikan potensi hebat dari <a href="https://laravel.com">Laravel</a> dan estetika modern dari <a href="https://github.com/stisla/stisla">Stisla</a> untuk mengatasi tantangan kompleks dalam pengelolaan kelas. Proyek ini dirancang untuk memberdayakan pendidik dan staff sekolah dengan alat yang diperlukan untuk mengelola, memonitor, dan memfasilitasi pengalaman belajar yang optimal.
 </span>
