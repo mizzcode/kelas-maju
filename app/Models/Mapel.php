@@ -15,6 +15,6 @@ class Mapel extends Model
     ];
 
     public function teacher() {
-        return $this->belongsTo('App\Model\Teacher');
+        return $this->belongsTo(Teacher::class);
     }
 }
