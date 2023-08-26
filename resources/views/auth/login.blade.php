@@ -12,7 +12,7 @@
             <div class="card-header"><h4>Login</h4></div>
 
             <div class="card-body">
-                <form method="POST" action="{{route("login")}}" class="needs-validation" novalidate="">
+                <form method="POST" action="{{route("postLogin")}}" class="needs-validation">
                 @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
