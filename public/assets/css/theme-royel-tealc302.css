@@ -1,0 +1,149 @@
+/*!
+Template :	AppsLand @by Softnio
+Preset   :	Royel Teal
+Version	 :	1.3.1
+Updated	 :	10.22.2018
+*/
+.active .steps h4,
+.heading span,
+.box-icon .fa,
+.box-icon .ti,
+.video-play,
+.video-play:hover,
+.video-play:focus,
+.owl-theme .owl-nav [class*=owl-],
+.single-features .ti,
+.single-features .fa,
+.contact-form h3,
+.contact-info h6 .fa,
+.footer-navigation li a:hover,
+.social-list li a:hover,
+.owl-theme .owl-nav [class*="owl-"]:hover,
+.footer-links li a:hover{
+	color:#6E49D9;
+}
+
+.pricing-bottom .ti-check{
+	color:#00d578;
+}
+
+.pricing-bottom .ti-close{
+	color:#de0000;
+}
+.owl-theme .owl-dots .owl-dot span:after,
+.affix .navbar-default .navbar-toggle, 
+.affix .navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:hover, 
+.navbar-default .navbar-toggle:focus {
+	border-color:#6E49D9;
+}
+.primary-bg{
+	background: #6E49D9;
+}
+.secondary-bg{
+	background: #01DBB0;
+}
+.owl-theme .owl-dots .owl-dot.active span, 
+.owl-theme .owl-dots .owl-dot:hover span,
+.affix .navbar-default .navbar-toggle, 
+.affix .navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:hover, 
+.navbar-default .navbar-toggle:focus {
+	background: #6E49D9;
+}
+.button{
+	background: #ED9443;
+}
+.button:hover {
+	background: #6E49D9;
+}
+.header-texts .button{
+	background: #ED9443;
+	color: #fff;
+}
+.header-texts .button:hover {
+	background: #fff;
+	color: #ED9443;
+}
+.button.button-transparent{
+	background:transparent;
+}
+.button.button-transparent:hover{
+	background: #fff;
+	color: #ED9443;
+	border-color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a.button,
+.navbar-default .navbar-nav > li > a.button:focus{
+	border:2px solid #ED9443;
+	background: #ED9443;
+}
+.navbar-default .navbar-nav > li > a.button:hover{
+	color: #ED9443;
+}
+.affix .navbar-default .navbar-nav > li > a.button:hover,
+.affix .navbar-default .navbar-nav > li.active > a.button,
+.affix .navbar-default .navbar-nav > li.active > a.button:focus{
+	color: #ED9443;
+	border-color: #ED9443;
+}
+
+.gradiant-background,
+.bg-gradiant.mfp-bg,
+.box-icon,
+.team-member .team-photo:after{
+	background-image: -o-linear-gradient(157deg, #01DBB0 0%, #6E49D9 100%);
+	background-image: linear-gradient(293deg, #01DBB0 0%, #6E49D9 100%);
+}
+.meta-heading{
+	color: #01DBB0;
+	margin-bottom: 5px;
+}
+.feature-col .icon{
+	background: #EFFFFC;
+	color: #01DBB0;
+}
+.button.alt{
+	background: #fff;
+	color: #01DBB0;
+}
+.button.alt:hover{
+	background: #F93D66;
+	color: #fff;
+}
+.button.light{
+	background: #EFFFFC;
+	color: #01DBB0;
+}
+.button.light:hover{
+	background:#01DBB0; 
+	color: #fff;
+}
+.bg-circle .small, .bg-circle .big{
+	background: #EFFFFC;
+}
+.bg-circle .big:before{
+	background-image: -o-linear-gradient(157deg, #fff 0%, #6E49D9 100%);
+	background-image: linear-gradient(157deg, #fff 0%, #6E49D9 100%);
+}
+.bg-circle .big:after{
+	background-image: -o-linear-gradient(157deg, #fff 0%, #01DBB0 100%);
+	background-image: linear-gradient(157deg, #fff 0%, #01DBB0 100%);
+}
+ .pricing-box.alt h5{
+ 	color: #01DBB0;
+ }
+
+@media only screen and (max-width: 991px) {
+	.navbar-default .in .navbar-nav > li > a:hover,
+	.navbar-default .in .navbar-nav > li > a:focus,
+	.affix .navbar-default .navbar-nav > li > a:hover,
+	.affix .navbar-default .navbar-nav > li > a:focus,
+	.affix .navbar-default .navbar-nav > .active > a, 
+	.affix .navbar-default .navbar-nav > .active > a:hover, 
+	.affix .navbar-default .navbar-nav > .active > a:focus {
+		background:#6E49D9;
+	}
+
+}
