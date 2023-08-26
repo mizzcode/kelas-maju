@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\MahasiswaController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\HomeController;
@@ -28,5 +30,7 @@ Route::post("/logout", [LogoutController::class, "logout"])->middleware("auth")-
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get("/", [DashboardController::class, "index"])->name("dashboard");
     
-    Route::resource("mahasiswa", MahasiswaController::class)->middleware("auth")->names("mahasiswa");
+    Route::resource("user", UserController::class)->names("user");
+    Route::resource("student", StudentController::class)->names("student");
+    Route::resource("teacher", TeacherController::class)->names("teacher");
 });
