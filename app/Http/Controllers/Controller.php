@@ -14,28 +14,79 @@ class Controller extends BaseController
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            if (session('successCreateMahasiswa')) {
-                Alert::success("Success", session("successCreateMahasiswa"));
+
+            // alert user
+            if (session('successCreateUser')) {
+                Alert::success("Success", session("successCreateUser"));
             }
 
-            if (session('errorCreateMahasiswa')) {
-                Alert::error("Error", session("errorCreateMahasiswa"));
+            if (session('errorCreateUser')) {
+                Alert::error("Error", session("errorCreateUser"));
             }
 
-            if (session('successUpdateMahasiswa')) {
-                Alert::success("Success", session("successUpdateMahasiswa"));
+            if (session('successUpdateUser')) {
+                Alert::success("Success", session("successUpdateUser"));
             }
 
-            if (session('errorUpdateMahasiswa')) {
-                Alert::error("Error", session("errorUpdateMahasiswa"));
+            if (session('errorUpdateUser')) {
+                Alert::error("Error", session("errorUpdateUser"));
             }
 
-            if (session('successDeleteMahasiswa')) {
-                Alert::success("Success", session("successDeleteMahasiswa"));
+            if (session('successDeleteUser')) {
+                Alert::success("Success", session("successDeleteUser"));
             }
 
-            if (session('errorDeleteMahasiswa')) {
-                Alert::error("Error", session("errorDeleteMahasiswa"));
+            if (session('errorDeleteUser')) {
+                Alert::error("Error", session("errorDeleteUser"));
+            }
+            // alert student
+            if (session('successCreateStudent')) {
+                Alert::success("Success", session("successCreateStudent"));
+            }
+
+            if (session('errorCreateStudent')) {
+                Alert::error("Error", session("errorCreateStudent"));
+            }
+
+            if (session('successUpdateStudent')) {
+                Alert::success("Success", session("successUpdateStudent"));
+            }
+
+            if (session('errorUpdateStudent')) {
+                Alert::error("Error", session("errorUpdateStudent"));
+            }
+
+            if (session('successDeleteStudent')) {
+                Alert::success("Success", session("successDeleteStudent"));
+            }
+
+            if (session('errorDeleteStudent')) {
+                Alert::error("Error", session("errorDeleteStudent"));
+            }
+            
+            // alert teacher
+            if (session('successCreateTeacher')) {
+                Alert::success("Success", session("successCreateTeacher"));
+            }
+
+            if (session('errorCreateTeacher')) {
+                Alert::error("Error", session("errorCreateTeacher"));
+            }
+
+            if (session('successUpdateTeacher')) {
+                Alert::success("Success", session("successUpdateTeacher"));
+            }
+
+            if (session('errorUpdateTeacher')) {
+                Alert::error("Error", session("errorUpdateTeacher"));
+            }
+
+            if (session('successDeleteTeacher')) {
+                Alert::success("Success", session("successDeleteTeacher"));
+            }
+
+            if (session('errorDeleteTeacher')) {
+                Alert::error("Error", session("errorDeleteTeacher"));
             }
 
             if (session('login')) {

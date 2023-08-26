@@ -2,7 +2,8 @@
 
 namespace Tests;
 
-use App\Models\Mahasiswa;
+use App\Models\Mapel;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
@@ -13,7 +14,8 @@ abstract class TestCase extends BaseTestCase
     protected function setUp():void {
         parent::setUp();
 
-        Mahasiswa::query()->delete();
         User::query()->delete();
+        Mapel::query()->delete();
+        Teacher::query()->delete();
     } 
 }
