@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/mizzcode/kelas-maju">
-    <img src="https://github.com/mizzcode/kelas-maju/blob/dev/public/assets/img/logo/kelasmaju-white.svg" width="150">
+    <img width="959" alt="image" src="https://github.com/mizzcode/kelas-maju/assets/101040281/6ff67c2f-b003-4a03-a561-c63462fdd2c3">
   </a>
 </p>
 <span align="center">
