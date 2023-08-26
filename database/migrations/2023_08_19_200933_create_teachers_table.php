@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->uuid("id")->primary();
+            $table->string("email")->unique();
             $table->string("name");
             $table->integer("nip");
             $table->string("education");
             $table->enum("gender", ["Pria", "Wanita"]);
+            $table->enum("status", ["Active", "Not Active"])->default("Active");
+            $table->unsignedBigInteger("user_id");
             $table->timestamps();
+
+            $table->foreign("user_id")->references("id")->on("users");
         });
     }
 
