@@ -91,13 +91,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-12">
                                     <label for="email">EMAIL</label>
                                     <input type="email" class="form-control @error("email") is-invalid @enderror" name="email" value="{{old("email")}}">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="password">PASSWORD</label>
-                                        <input type="password" class="form-control @error("password") is-invalid @enderror" name="password" value="{{old("password")}}">
                                     </div>
                                 </div>
                                 <div class="form-row">
