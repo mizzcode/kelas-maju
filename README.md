@@ -4,7 +4,7 @@
     </a>
 </p>
 <p align="center">
-    <img width="959" alt="image" src="https://github.com/mizzcode/kelas-maju/assets/101040281/6ff67c2f-b003-4a03-a561-c63462fdd2c3">
+    <img width="959" alt="image" src="https://github.com/galihap76/kelas-maju/assets/83481679/f7b4490b-1fc1-4c10-a80a-e3205f18733e">
 </p>
 <hr>
     <b>KelasMaju</b> Adalah Sistem Manajemen Kelas untuk memberikan solusi inovatif yang mengintegrasikan potensi hebat dari <a href="https://laravel.com">Laravel</a> dan estetika modern dari <a href="https://github.com/stisla/stisla">Stisla</a> untuk mengatasi tantangan kompleks dalam pengelolaan kelas. Proyek ini dirancang untuk memberdayakan pendidik dan staff sekolah dengan alat yang diperlukan untuk mengelola, memonitor, dan memfasilitasi pengalaman belajar yang optimal.
@@ -58,6 +58,9 @@ php artisan serve
 ## Admin Account
 - Email : mizz@gmail.com
 - Password : mizz
+
+- Email : galih@gmail.com
+- Password : galih
 
 ## License
 
