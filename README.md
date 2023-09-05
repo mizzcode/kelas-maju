@@ -12,30 +12,45 @@
 
 ## Installation
 
-1. Clone the repository
-```bash
-https://github.com/mizzcode/kelas-maju.git
+1. Clone repositori
 ```
-2. Install Package
-```bash
+git clone https://github.com/mizzcode/kelas-maju.git
+```
+
+2. Masuk direktori kelas maju
+```
+cd kelas-maju
+```
+
+3. Install package bawahan laravel
+```
 composer install
 ```
-3. Rename .env.example to .env
-```bash
+
+4. Rename .env.example ke .env
+```
 copy .env.example .env
 ```
-4. Open .env lalu ubah konfigurasi database sesuai yang ingin dipakai
-```bash
+
+5. Generate key
+```
+php artisan key:generate
+```
+
+6. Open .env lalu ubah konfigurasi database sesuai yang ingin dipakai
+```
 DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-5. Jalankan Migration & Seeder
+
+7. Jalankan Migration & Seeder
 ```bash
 php artisan migrate --seed
 ```
-6. Jalankan website
+
+8. Jalankan website
 ```bash
 php artisan serve
 ```
