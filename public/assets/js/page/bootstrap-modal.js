@@ -17,6 +17,7 @@ $("#detailModel").on("show.bs.modal", function (event) {
   let role = button.data("role");
   let created_at = button.data("created_at");
   let updated_at = button.data("updated_at");
+  let teacher_id = button.data("teacher_id");
 
   // menunjukkan modal saat ini
   let modal = $(this);
@@ -34,4 +35,5 @@ $("#detailModel").on("show.bs.modal", function (event) {
   modal.find(".modal-body #role").val(role);
   modal.find(".modal-body #created_at").val(created_at);
   modal.find(".modal-body #updated_at").val(updated_at);
+  modal.find(".modal-body #teacher_id").val(teacher_id);
 })

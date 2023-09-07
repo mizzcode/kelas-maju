@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class Mapel extends Model
@@ -14,7 +15,8 @@ class Mapel extends Model
         "teacher_id",
     ];
 
-    public function teacher() {
+    public function teacher(): BelongsTo
+    {
         return $this->belongsTo(Teacher::class);
     }
 }

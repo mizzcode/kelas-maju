@@ -15,90 +15,122 @@ class Controller extends BaseController
     {
         $this->middleware(function ($request, $next) {
 
-            // alert user
-            if (session('successCreateUser')) {
-                Alert::success("Success", session("successCreateUser"));
-            }
+            // Alert user
+            switch (true) {
+                case session('successCreateUser'):
+                    Alert::success("Success", session("successCreateUser"));
+                    break;
 
-            if (session('errorCreateUser')) {
-                Alert::error("Error", session("errorCreateUser"));
-            }
+                case session('errorCreateUser'):
+                    Alert::error("Error", session("errorCreateUser"));
+                    break;
 
-            if (session('successUpdateUser')) {
-                Alert::success("Success", session("successUpdateUser"));
-            }
+                case session('successUpdateUser'):
+                    Alert::success("Success", session("successUpdateUser"));
+                    break;
 
-            if (session('errorUpdateUser')) {
-                Alert::error("Error", session("errorUpdateUser"));
-            }
+                case session('errorUpdateUser'):
+                    Alert::error("Error", session("errorUpdateUser"));
+                    break;
 
-            if (session('successDeleteUser')) {
-                Alert::success("Success", session("successDeleteUser"));
-            }
+                case session('successDeleteUser'):
+                    Alert::success("Success", session("successDeleteUser"));
+                    break;
 
-            if (session('errorDeleteUser')) {
-                Alert::error("Error", session("errorDeleteUser"));
-            }
-            // alert student
-            if (session('successCreateStudent')) {
-                Alert::success("Success", session("successCreateStudent"));
-            }
+                case session('errorDeleteUser'):
+                    Alert::error("Error", session("errorDeleteUser"));
+                    break;
 
-            if (session('errorCreateStudent')) {
-                Alert::error("Error", session("errorCreateStudent"));
-            }
+                    // Alert student
+                case session('successCreateStudent'):
+                    Alert::success("Success", session("successCreateStudent"));
+                    break;
 
-            if (session('successUpdateStudent')) {
-                Alert::success("Success", session("successUpdateStudent"));
-            }
+                case session('errorCreateStudent'):
+                    Alert::error("Error", session("errorCreateStudent"));
+                    break;
 
-            if (session('errorUpdateStudent')) {
-                Alert::error("Error", session("errorUpdateStudent"));
-            }
+                case session('successUpdateStudent'):
+                    Alert::success("Success", session("successUpdateStudent"));
+                    break;
 
-            if (session('successDeleteStudent')) {
-                Alert::success("Success", session("successDeleteStudent"));
-            }
+                case session('errorUpdateStudent'):
+                    Alert::error("Error", session("errorUpdateStudent"));
+                    break;
 
-            if (session('errorDeleteStudent')) {
-                Alert::error("Error", session("errorDeleteStudent"));
-            }
-            
-            // alert teacher
-            if (session('successCreateTeacher')) {
-                Alert::success("Success", session("successCreateTeacher"));
-            }
+                case session('successDeleteStudent'):
+                    Alert::success("Success", session("successDeleteStudent"));
+                    break;
 
-            if (session('errorCreateTeacher')) {
-                Alert::error("Error", session("errorCreateTeacher"));
-            }
+                case session('errorDeleteStudent'):
+                    Alert::error("Error", session("errorDeleteStudent"));
+                    break;
 
-            if (session('successUpdateTeacher')) {
-                Alert::success("Success", session("successUpdateTeacher"));
-            }
+                    // Alert teacher
+                case session('successCreateTeacher'):
+                    Alert::success("Success", session("successCreateTeacher"));
+                    break;
 
-            if (session('errorUpdateTeacher')) {
-                Alert::error("Error", session("errorUpdateTeacher"));
-            }
+                case session('errorCreateTeacher'):
+                    Alert::error("Error", session("errorCreateTeacher"));
+                    break;
 
-            if (session('successDeleteTeacher')) {
-                Alert::success("Success", session("successDeleteTeacher"));
-            }
+                case session('successUpdateTeacher'):
+                    Alert::success("Success", session("successUpdateTeacher"));
+                    break;
 
-            if (session('errorDeleteTeacher')) {
-                Alert::error("Error", session("errorDeleteTeacher"));
-            }
+                case session('errorUpdateTeacher'):
+                    Alert::error("Error", session("errorUpdateTeacher"));
+                    break;
 
-            if (session('login')) {
-                Alert::success("Success", session('login'));
-            }
+                case session('successDeleteTeacher'):
+                    Alert::success("Success", session("successDeleteTeacher"));
+                    break;
 
-            if (session('errorLogin')) {
-                Alert::error("Error", session('errorLogin'));
-            }
+                case session('errorDeleteTeacher'):
+                    Alert::error("Error", session("errorDeleteTeacher"));
+                    break;
 
-            if (session('logout')) {
-                Alert::success("Success", session('logout'));
+                case session('login'):
+                    Alert::success("Success", session('login'));
+                    break;
+
+                case session('errorLogin'):
+                    Alert::error("Error", session('errorLogin'));
+                    break;
+
+                case session('logout'):
+                    Alert::success("Success", session('logout'));
+                    break;
+
+                    // Alert mapel
+                case session('successCreateMapel'):
+                    Alert::success("Success", session("successCreateMapel"));
+                    break;
+
+                case session('errorCreateMapel'):
+                    Alert::error("Error", session("errorCreateMapel"));
+                    break;
+
+                case session('successUpdateMapel'):
+                    Alert::success("Success", session("successUpdateMapel"));
+                    break;
+
+                case session('errorUpdateMapel'):
+                    Alert::error("Error", session("errorUpdateMapel"));
+                    break;
+
+                case session('requiredFieldsUpdate'):
+                    Alert::error("Error", session("requiredFieldsUpdate"));
+                    break;
+
+                case session('successDeleteMapel'):
+                    Alert::success("Success", session("successDeleteMapel"));
+                    break;
+
+                case session("errorDeleteMapel"):
+                    Alert::error("Error", session("errorDeleteMapel"));
+                    break;
             }
 
             return $next($request);
