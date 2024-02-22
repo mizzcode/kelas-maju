@@ -18,14 +18,14 @@
     <div class="col-md-6 col-lg-12">
         <div class="card">
         <div class="card-header">
-            <h4>Seluruh Data Pengguna</h4>
+            <h4>Seluruh Data Mata Pelajaran</h4>
         </div>
         <div class="card-body p-0">
-            <p class="px-4">Berikut adalah daftar seluruh pengguna.</p>
+            <p class="px-4">Berikut adalah daftar seluruh mata pelajaran.</p>
             {{-- id add akan di tangkap jqeury untuk membuat modal
                 cek di bootstrap-modal.js --}}
             <div class="m-3 d-flex align-items-center justify-content-end">
-                <button class="btn btn-success" data-toggle="modal" data-target="#add">Add User</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#add">Add Mapel</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-md">
@@ -35,22 +35,16 @@
                     <th>NAMA GURU PENGAJAR</th>
                     <th>ID GURU</th>
                     <th>CREATED AT</th>
-                    <th>UPDATED AT</th>
                     <th>ACTION</th>
                 </tr>
 
-                @php
-                $no = 1;
-                @endphp
-
                 @foreach ($mapel as $data)
                     <tr>
-                        <td>{{$no++}}</td>
+                        <td>{{$loop->iteration}}</td>
                         <td>{{$data->name}}</td>
                         <td>{{$data->teacher->name}}</td>
                         <td>{{$data->teacher_id}}</td>
                         <td>{{$data->created_at}}</td>
-                        <td>{{$data->updated_at}}</td>
                         <td>
                             <a href="{{ route('mapel.destroy', $data->id)}}" class="btn btn-danger"
                                 data-confirm-delete="true">Delete
@@ -97,8 +91,6 @@
                                             Anda harus mengisi nama mata pelajaran.</p>
                                         @enderror
                                     </div>
-                                   
-
                                     <div class="form-group col-md-6">
                                         <label for="teacher_id">PILIH GURU</label>
                                         <select class="form-control" name="teacher_id" id="teacher_id">
@@ -140,13 +132,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-row">
-                               
                                 <div class="form-group col-md-6">
                                     <label for="name">Mata Pelajaran</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
                                         id="name" name="name">
                                 </div>
-
                                 <div class="form-group col-md-6">
                                     <label for="teacher_id">PILIH GURU</label>
                                     <select class="form-control" name="teacher_id" id="teacher_id">
