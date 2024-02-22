@@ -144,7 +144,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="email">EMAIL</label>
-                                    <input type="email" class="form-control @error("email") is-invalid @enderror" id="email" name="email" >
+                                    <input type="email" class="form-control" id="email" name="email" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
