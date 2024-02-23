@@ -3859,12 +3859,18 @@ body.layout-3 .main-footer {
 
 .main-footer {
     padding: 20px 30px 20px 280px;
-    margin: 50px 0 0 40px;
     color: #98a6ad;
     border-top: 1px solid #e3eaef;
     display: flex;
     width: 100%;
 }
+
+@media screen and (min-width: 768px) {
+    .main-footer {
+        margin: 50px 0 0 110px;
+    }
+}
+
 .main-footer .footer-left {
     float: left;
 }
