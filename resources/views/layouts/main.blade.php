@@ -29,9 +29,7 @@
         </section>
         @yield("modal")
       </div>
-    </div>
-    {{-- Footer --}}
-    @include('layouts.footer')
+    </div> 
   </div>
   {{-- Script Js --}}
   @include('layouts.footer-script')
