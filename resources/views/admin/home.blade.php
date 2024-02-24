@@ -48,7 +48,7 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Total Teacher</h4>
+                    <h4>Total Guru</h4>
                 </div>
                 <div class="card-body">
                     {{$total_teacher}}
@@ -63,7 +63,7 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Total Mapel</h4>
+                    <h4>Total Mata Pelajaran</h4>
                 </div>
                 <div class="card-body">
                     {{$total_mapel}}
