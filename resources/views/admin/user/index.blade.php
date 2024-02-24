@@ -34,7 +34,6 @@
                 <th>NAME</th>
                 <th>EMAIL</th>
                 <th>ROLE</th>
-                <th>CREATED AT</th>
                 <th>ACTION</th>
                 </tr>
                 @foreach ($users as $user)
@@ -43,12 +42,12 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role}}</td>
-                    <td>{{$user->created_at}}</td>
                     <td>
                         <a href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger" 
                             data-confirm-delete="true">Delete
                         </a>
-                        <button class="btn btn-info" data-id="{{$user->id}}" 
+                        <button class="btn btn-info" 
+                            data-id="{{$user->id}}" 
                             data-name="{{$user->name}}"
                             data-email="{{$user->email}}"
                             data-role="{{$user->role}}"
@@ -144,7 +143,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="email">EMAIL</label>
-                                    <input type="email" class="form-control" id="email" name="email" readonly>
+                                    <input type="email" class="form-control @error("email") is-invalid @enderror" id="email" name="email">
                                 </div>
                             </div>
                             <div class="form-row">

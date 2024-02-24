@@ -35,7 +35,6 @@
                 <th>NIP</th>
                 <th>PENDIDIKAN</th>
                 <th>STATUS</th>
-                <th>CREATED AT</th>
                 <th>ACTION</th>
                 </tr>
                 @foreach ($teachers as $teacher)
@@ -49,12 +48,12 @@
                     @else
                     <td><div class="badge badge-danger">Not Active</div></td>
                     @endif
-                    <td>{{$teacher->created_at}}</td>
                     <td>
                         <a href="{{ route('teacher.destroy', $teacher->id) }}" class="btn btn-danger" 
                             data-confirm-delete="true">Delete
                         </a>
-                        <button class="btn btn-info" data-id="{{$teacher->id}}" 
+                        <button class="btn btn-info" 
+                            data-id="{{$teacher->id}}" 
                             data-email="{{$teacher->email}}"
                             data-name="{{$teacher->name}}" 
                             data-nip="{{$teacher->nip}}"
