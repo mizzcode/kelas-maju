@@ -9,15 +9,16 @@
     <ul class="sidebar-menu">
       <li class="menu-header">MENU</li>
       <li class="nav-item {{Request::is('admin') ? 'active' : ''}}">
-        @php
 
-        // Solusi fix prettier untuk remove spasi pada route
+        {{-- Solusi fix prettier untuk remove spasi pada route --}}
+        @php
         $dashboard = "dashboard";
         $userIndex = "user.index";
         $studentIndex = "student.index";
         $teacherIndex = "teacher.index";
         $mapelIndex = "mapel.index";
         @endphp
+
         <a href="{{route($dashboard)}}"><i class="fas fa-fire"></i><span>Dashboard</span></a>
       </li>
       <li class="nav-item {{Request::is('admin/user') ? 'active' : ''}}">
