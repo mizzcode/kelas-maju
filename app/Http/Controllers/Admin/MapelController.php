@@ -16,8 +16,7 @@ class MapelController extends Controller
 
     private function useValidator(Request $request, array $rules)
     {
-        $validator = Validator::make($request->all(), $rules);
-        return $validator;
+        return Validator::make($request->all(), $rules);
     }
 
     public function index()
