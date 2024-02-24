@@ -7,10 +7,10 @@
 @endsection
 
 @section('content-header')
-<h1>Pengguna</h1>
+<h1>Mapel</h1>
 <div class="section-header-breadcrumb">
     <div class="breadcrumb-item active"><a href="{{route("dashboard")}}">Dashboard</a></div>
-    <div class="breadcrumb-item">Pengguna</div>
+    <div class="breadcrumb-item">Mapel</div>
 </div>
 @endsection
 
@@ -34,33 +34,36 @@
                     <th>MATA PELAJARAN</th>
                     <th>NAMA GURU PENGAJAR</th>
                     <th>ID GURU</th>
-                    <th>CREATED AT</th>
                     <th>ACTION</th>
                 </tr>
 
-                @foreach ($mapel as $data)
+                @foreach ($mapels as $mapel)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$data->name}}</td>
-                        <td>{{$data->teacher->name}}</td>
-                        <td>{{$data->teacher_id}}</td>
-                        <td>{{$data->created_at}}</td>
+                        <td>{{$mapel->name}}</td>
+                        <td>{{$mapel->teacher->name}}</td>
+                        <td>{{$mapel->teacher_id}}</td>
                         <td>
-                            <a href="{{ route('mapel.destroy', $data->id)}}" class="btn btn-danger"
+                            <a href="{{ route('mapel.destroy', $mapel->id)}}" class="btn btn-danger"
                                 data-confirm-delete="true">Delete
                             </a>
-                            <button class="btn btn-info" data-id="{{$data->id}}" data-name="{{$data->name}}"
-                                data-created_at="{{$data->created_at}}" data-updated_at="{{$data->updated_at}}" data-teacher_id="{{$data->teacher_id}}"
-                                data-toggle="modal" data-target="#detailModel">Detail
+                            <button class="btn btn-info" 
+                                data-id="{{$mapel->id}}" 
+                                data-name="{{$mapel->name}}"
+                                data-created_at="{{$mapel->created_at}}" 
+                                data-updated_at="{{$mapel->updated_at}}" 
+                                data-teacher_id="{{$mapel->teacher_id}}"
+                                data-toggle="modal" 
+                                data-target="#detailModel">Detail
                             </button>
                         </td>
                     </tr>
-                    @endforeach
+                @endforeach
             </table>
             </div>
         </div>
         <div class="d-flex justify-content-center align-items-center">
-            {{$mapel->links()}}
+            {{$mapels->links()}}
         </div>
         </div>
     </div>
@@ -72,7 +75,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah Data Mapel</h5>
+                    <h5 class="modal-title">Tambah Data Mata Pelajaran</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -85,17 +88,18 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="name">NAMA MATA PELAJARAN</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" id="name">
-                                        @error('name') <p style="color:red;"><i class="bi bi-exclamation-circle"></i>
-                                            Anda harus mengisi nama mata pelajaran.</p>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name">
+                                        @error('name') 
+                                        <p style="color:red;"><i class="bi bi-exclamation-circle"></i>
+                                            Anda harus mengisi nama mata pelajaran.
+                                        </p>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="teacher_id">PILIH GURU</label>
                                         <select class="form-control" name="teacher_id" id="teacher_id">
-                                            @foreach($teachersIds as $data)
-                                            <option value="{{$data->id}}">{{$data->name}}</option>
+                                            @foreach($teachers as $teacher)
+                                            <option value="{{$teacher->id}}">{{$teacher->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -134,17 +138,24 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="name">Mata Pelajaran</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" name="name">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="teacher_id">PILIH GURU</label>
                                     <select class="form-control" name="teacher_id" id="teacher_id">
-                                        @foreach($teachersIds as $data)
-                                        <option value="{{$data->id}}">{{$data->name}}</option>
+                                        @foreach($teachers as $teacher)
+                                        <option value="{{$teacher->id}}">{{$teacher->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="created_at">DI BUAT</label>
+                                <input type="datetime-local" class="form-control" id="created_at" name="created_at" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="updated_at">DI UPDATE</label>
+                                <input type="datetime-local" class="form-control" id="updated_at" name="updated_at" readonly>
                             </div>
                         </div>
                 </div>
