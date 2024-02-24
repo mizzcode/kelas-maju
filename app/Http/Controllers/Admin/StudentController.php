@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class StudentController extends Controller
 {
@@ -32,30 +33,36 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi input terlebih dahulu
-        $validator = Validator::make($request->all(), [
-            "email" => "required|email:dns",
-            "name" => "required|max:50",
-            "nis" => "required|max:50",
-            "jurusan" => "required|max:50",
-            "status" => "required",
-        ]);
+        try {
+            // Validasi input terlebih dahulu
+            $validator = Validator::make($request->all(), [
+                "email" => "required|email:dns",
+                "name" => "required|max:50",
+                "nis" => "required|max:50",
+                "jurusan" => "required|max:50",
+                "status" => "required",
+            ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-            ->withErrors($validator)
-            ->withInput()
-            ->with("errorCreateStudent", "Gagal Menambahkan Siswa Baru");
+            if ($validator->fails()) {
+                return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with("errorCreateStudent", "Gagal Menambahkan Siswa Baru");
+            }
+            // menerima input yang sudah tervalidasi
+            $validated = $validator->validated();
+
+            // untuk mengetahui yang create data itu siapa
+            // menambahkan key baru buat kolom user_id dengan value user saat ini
+            $validated['user_id'] = Auth::user()->id;
+
+            Student::query()->create($validated);
+
+            return redirect()->route("student.index")->with("successCreateStudent", "Berhasil Menambahkan Siswa Baru");
+        } catch (QueryException $e) {
+            Log::info($e);
+            return redirect()->back()->with('errorCreateStudent', 'Gagal Menambahkan Siswa Baru');
         }
-        // menerima input yang sudah tervalidasi
-        $validated = $validator->validated();
-
-        // menambahkan key baru buat kolom user_id dengan value user saat ini
-        $validated['user_id'] = Auth::user()->id;
-
-        Student::query()->create($validated);
-
-        return redirect()->route("student.index")->with("successCreateStudent", "Berhasil Menambahkan Siswa Baru");
     }
 
     /**
@@ -65,19 +72,34 @@ class StudentController extends Controller
     {
         try {
             $student = Student::query()->findOrFail($request->student_id);
-    
-            $student->name = $request->name;
-            $student->nis = $request->nis;
-            $student->jurusan = $request->jurusan;
-            $student->status = $request->status;
 
+            $validator = Validator::make($request->all(), [
+                "name" => "required|max:50",
+                "nis" => "required|max:50",
+                "jurusan" => "required|max:50",
+                "status" => "required"
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with("errorUpdateStudent", "Gagal memperbarui data siswa");
+            }
+    
+            // menerima input yang sudah tervalidasi
+            $validated = $validator->validated();
+            
             // untuk mengetahui yang update data itu siapa
-            $student->user_id = Auth::user()->id;
-            $student->save();
+            // menambahkan key baru buat kolom user_id dengan value user saat ini
+            $validated['user_id'] = Auth::user()->id;
+            
+            Student::query()->where('id', '=', $student->id)->update($validated);
     
             return redirect()->route("student.index")->with("successUpdateStudent", "Data Siswa Berhasil Di Update.");
         } catch (QueryException $e) {
-            return back()->with("errorUpdateStudent", "Gagal memperbarui data siswa:" . $e->getMessage());
+            Log::info($e);
+            return back()->with("errorUpdateStudent", "Gagal memperbarui data siswa");
         }
     }
 
@@ -87,13 +109,11 @@ class StudentController extends Controller
     public function destroy(string $id)
     {
         try {
-            $student = Student::query()->findOrFail($id);
+            Student::query()->where('id', '=', $id)->delete();
             
-            $student->delete();
-
             return redirect()->route("student.index")->with("successDeleteStudent", "Data Siswa Berhasil Di Delete.");
         } catch (QueryException $e) {
-            return back()->with("errorDeleteStudent", "Gagal menghapus data siswa: " . $e->getMessage());
+            return back()->with("errorDeleteStudent", "Gagal menghapus data siswa");
         }
     }
 }
