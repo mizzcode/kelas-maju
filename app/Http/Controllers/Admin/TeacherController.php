@@ -7,10 +7,15 @@ use App\Models\Teacher;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
+    private function useValidator(Request $request, array $rules)
+    {
+        return Validator::make($request->all(), $rules);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -32,30 +37,36 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi input terlebih dahulu
-        $validator = Validator::make($request->all(), [
-            "email" => "required|email:dns",
-            "name" => "required|max:50",
-            "nip" => "required|max:50",
-            "education" => "required|max:50",
-            "gender" => "required",
-            "status" => "required",
-        ]);
+        try {
+            // Validasi input terlebih dahulu
+            $validator = $this->useValidator($request, [
+                "email" => "required|email:dns",
+                "name" => "required|max:50",
+                "nip" => "required|max:50",
+                "education" => "required|max:50",
+                "gender" => "required",
+                "status" => "required",
+            ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-            ->withErrors($validator)
-            ->withInput()
-            ->with("errorCreateTeacher", "Gagal Menambahkan Guru Baru");
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with("errorCreateTeacher", "Gagal Menambahkan Guru Baru");
+            }
+            // menerima input yang sudah tervalidasi
+            $validated = $validator->validated();
+            // menambahkan key baru buat kolom user_id dengan value user saat ini
+            $validated['user_id'] = Auth::user()->id;
+
+            Teacher::query()->create($validated);
+
+            return redirect()->route("teacher.index")->with("successCreateTeacher", "Berhasil Menambahkan Guru Baru");
+        } catch (QueryException $e) {
+            Log::info($e);
+            dd($e->getMessage());
+            return redirect()->back()->with("errorCreateTeacher", "Gagal Menambahkan Guru Baru");
         }
-        // menerima input yang sudah tervalidasi
-        $validated = $validator->validated();
-        // menambahkan key baru buat kolom user_id dengan value user saat ini
-        $validated['user_id'] = Auth::user()->id;
-
-        Teacher::query()->create($validated);
-
-        return redirect()->route("teacher.index")->with("successCreateTeacher", "Berhasil Menambahkan Guru Baru");
     }
 
     /**
@@ -65,21 +76,35 @@ class TeacherController extends Controller
     {
         try {
             $teacher = Teacher::query()->findOrFail($request->teacher_id);
-    
-            $teacher->email = $request->email;
-            $teacher->name = $request->name;
-            $teacher->nip = $request->nip;
-            $teacher->education = $request->education;
-            $teacher->gender = $request->gender;
-            $teacher->status = $request->status;
 
-            // untuk mengetahui yang update data itu siapa
-            $teacher->user_id = Auth::user()->id;
-            $teacher->save();
-    
-            return redirect()->route("teacher.index")->with("successUpdateTeacher", "Data Guru Berhasil Di Update.");
+            // Validasi input terlebih dahulu
+            $validator = $this->useValidator($request, [
+                "email" => "required|email:dns",
+                "name" => "required|max:50",
+                "nip" => "required|max:50",
+                "education" => "required|max:50",
+                "gender" => "required",
+                "status" => "required",
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with("errorCreateTeacher", "Gagal Menambahkan Guru Baru");
+            }
+            // menerima input yang sudah tervalidasi
+            $validated = $validator->validated();
+            // menambahkan key baru buat kolom user_id dengan value user saat ini
+            $validated['user_id'] = Auth::user()->id;
+
+            Teacher::query()->where("id", "=", $teacher->id)->update($validated);
+
+            return redirect()->route("teacher.index")->with("successUpdateTeacher", "Berhasil Update Data Guru");
         } catch (QueryException $e) {
-            return back()->with("errorUpdateTeacher", "Gagal memperbarui data guru: " . $e->getMessage());
+            Log::info($e);
+            dd($e->getMessage());
+            return back()->with("errorUpdateTeacher", "Gagal memperbarui data guru");
         }
     }
 
@@ -89,13 +114,13 @@ class TeacherController extends Controller
     public function destroy(string $id)
     {
         try {
-            $teacher = Teacher::query()->findOrFail($id);
-            
-            $teacher->delete();
+            Teacher::query()->where("id", "=", $id)->delete();
 
             return redirect()->route("teacher.index")->with("successDeleteTeacher", "Data Guru Berhasil Di Delete.");
         } catch (QueryException $e) {
-            return back()->with("errorDeleteTeacher", "Gagal menghapus data guru: " . $e->getMessage());
+            Log::info($e);
+            dd($e->getMessage());
+            return back()->with("errorDeleteTeacher", "Gagal menghapus data guru");
         }
     }
 }

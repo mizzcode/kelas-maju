@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Log;
 
 class StudentController extends Controller
 {
+    private function useValidator(Request $request, array $rules)
+    {
+        return Validator::make($request->all(), $rules);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -34,8 +38,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         try {
-            // Validasi input terlebih dahulu
-            $validator = Validator::make($request->all(), [
+            $validator = $this->useValidator($request, [
                 "email" => "required|email:dns",
                 "name" => "required|max:50",
                 "nis" => "required|max:50",
@@ -45,9 +48,9 @@ class StudentController extends Controller
 
             if ($validator->fails()) {
                 return redirect()->back()
-                ->withErrors($validator)
-                ->withInput()
-                ->with("errorCreateStudent", "Gagal Menambahkan Siswa Baru");
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with("errorCreateStudent", "Gagal Menambahkan Siswa Baru");
             }
             // menerima input yang sudah tervalidasi
             $validated = $validator->validated();
@@ -73,29 +76,30 @@ class StudentController extends Controller
         try {
             $student = Student::query()->findOrFail($request->student_id);
 
-            $validator = Validator::make($request->all(), [
+            $validator = $this->useValidator($request, [
+                "email" => "required|email:dns",
                 "name" => "required|max:50",
                 "nis" => "required|max:50",
                 "jurusan" => "required|max:50",
-                "status" => "required"
+                "status" => "required",
             ]);
 
             if ($validator->fails()) {
                 return redirect()->back()
-                ->withErrors($validator)
-                ->withInput()
-                ->with("errorUpdateStudent", "Gagal memperbarui data siswa");
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with("errorUpdateStudent", "Gagal memperbarui data siswa");
             }
-    
+
             // menerima input yang sudah tervalidasi
             $validated = $validator->validated();
-            
+
             // untuk mengetahui yang update data itu siapa
             // menambahkan key baru buat kolom user_id dengan value user saat ini
             $validated['user_id'] = Auth::user()->id;
-            
+
             Student::query()->where('id', '=', $student->id)->update($validated);
-    
+
             return redirect()->route("student.index")->with("successUpdateStudent", "Data Siswa Berhasil Di Update.");
         } catch (QueryException $e) {
             Log::info($e);
@@ -110,7 +114,7 @@ class StudentController extends Controller
     {
         try {
             Student::query()->where('id', '=', $id)->delete();
-            
+
             return redirect()->route("student.index")->with("successDeleteStudent", "Data Siswa Berhasil Di Delete.");
         } catch (QueryException $e) {
             return back()->with("errorDeleteStudent", "Gagal menghapus data siswa");
