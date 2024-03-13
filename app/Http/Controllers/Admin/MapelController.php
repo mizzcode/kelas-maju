@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Log;
 
 class MapelController extends Controller
 {
-
     private function useValidator(Request $request, array $rules)
     {
         return Validator::make($request->all(), $rules);
