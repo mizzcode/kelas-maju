@@ -23,6 +23,7 @@
 		ga('send', 'pageview');
 		</script>
 		@stack('styles')
+		@cloudinaryJS
 	</head>
 	<body class="overflow-scroll">
 
@@ -50,7 +51,7 @@
 							<li><a href="#"><em class="fa fa-instagram"></em></a></li>
 						</ul>
 						<ul class="footer-links inline-list">
-							<li>Copyright © 2024 KelasMaju. Made with <i class="fa-solid fa-heart" style="color: #ff0000;"></i> by <a target="_blank" href="http://github.com/mizzcode">Misbah</a></li>
+							<li>Copyright © 2024 KelasMaju. Made with <i class="fa-solid fa-heart" style="color: #ff0000;"></i> by <a target="_blank" rel="noopener noreferrer" href="http://github.com/mizzcode">Misbah</a></li>
 						</ul>
 					</div><!-- .col  -->
 				</div><!-- .row  -->
