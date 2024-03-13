@@ -332,59 +332,51 @@
 						</div>
 					</div>
 				</div><!-- .section-head  -->
-				<div class="row"><!-- .col  -->
-					<div class="col-md-3 col-sm-6">
-						<div class="team-member">
-							<div class="team-photo">
-								<img src="images/misbah-fb.jpg" alt="team" />
-								<a href="#team-profile-3" class="expand-trigger content-popup"><span class="ti ti-plus"></span></a>
+				<div class="row">
+					@foreach ($users as $user)
+						@if ($user->role === 'student')
+						<div class="col-md-3 col-sm-6">
+							<div class="team-member">
+								<div class="team-photo">
+									<img src="images/misbah-fb.jpg" alt="team" />
+									<a href="#{{$loop->iteration}}" class="expand-trigger content-popup"><span class="ti ti-plus"></span></a>
+								</div>
+								<div class="team-info">
+									<h4 class="name">{{$user->name}}</h4>
+									<p class="sub-title">{{$user->role}}</p>
+								</div>
+								<!-- Start .team-profile  -->
+								<div id="{{$loop->iteration}}" class="team-profile mfp-hide">
+									<button title="Close (Esc)" type="button" class="mfp-close">×</button>
+									<div class="container-fluid">
+										<div class="row no-mg">
+											<div class="col-md-6">
+												<div class="team-profile-photo">
+													<img src="images/misbah-fb.jpg" alt="team" />
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="team-profile-info">
+													<h3 class="name">{{$user->name}}</h3>
+													<p class="sub-title">{{$user->role}}</p>
+													<ul class="social">
+														<li><a href="#"><em class="fa fa-facebook"></em></a></li>
+														<li><a href="#"><em class="fa fa-twitter"></em></a></li>
+														<li><a href="#"><em class="fa fa-google-plus"></em></a></li>
+														<li><a href="#"><em class="fa fa-instagram"></em></a></li>
+													</ul>
+													<p>He is a great man to work Lorem ipsum dolor sit amet, consec tetur adipis icing elit. Simi lique, autem. </p>
+													<p>Tenetur quos facere magnam volupt ates quas esse Sedrep ell endus mole stiae tates quas esse Sed repell endus molesti aela uda ntium quis quam iusto minima thanks.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div><!-- .team-profile  -->
 							</div>
-							<div class="team-info">
-								<h4 class="name">Misbahudin</h4>
-								<p class="sub-title">FullStack Developer</p>
-							</div>
-							<!-- Start .team-profile  -->
-							<div id="team-profile-3" class="team-profile mfp-hide">
-								<button title="Close (Esc)" type="button" class="mfp-close">×</button>
-								<div class="container-fluid">
-									<div class="row no-mg">
-										<div class="col-md-6">
-											<div class="team-profile-photo">
-												<img src="images/misbah-fb.jpg" alt="team" />
-											</div>
-										</div><!-- .col  -->
-										<div class="col-md-6">
-											<div class="team-profile-info">
-												<h3 class="name">Misbahudin</h3>
-												<p class="sub-title">FullStack Developer</p>
-												<ul class="social">
-													<li><a href="#"><em class="fa fa-facebook"></em></a></li>
-													<li><a href="#"><em class="fa fa-twitter"></em></a></li>
-													<li><a href="#"><em class="fa fa-google-plus"></em></a></li>
-													<li><a href="#"><em class="fa fa-instagram"></em></a></li>
-												</ul>
-												<p>He is a great man to work Lorem ipsum dolor sit amet, consec tetur adipis icing elit. Simi lique, autem. </p>
-												<p>Tenetur quos facere magnam volupt ates quas esse Sedrep ell endus mole stiae tates quas esse Sed repell endus molesti aela uda ntium quis quam iusto minima thanks.</p>
-												<div class="my-skills">
-													<h4>Skills</h4>
-													<div class="text-left">
-															<img src="{{asset("assets/images/html.png")}}" width="50" alt="HTML">
-															<img src="{{asset("assets/images/css.png")}}" width="50" alt="CSS">
-															<img src="{{asset("assets/images/javascript.png")}}" width="50" alt="JS">
-															<img src="{{asset("assets/images/nodejs.png")}}" width="50" alt="NODEJS">
-															<img src="{{asset("assets/images/php.png")}}" width="50" alt="PHP">
-															<img src="{{asset("assets/images/mysql.png")}}" width="50" alt="MYSQL">
-															<img src="{{asset("assets/images/postgresql.png")}}" width="50" alt="POSTGRESQL">
-													</div>
-											</div>
-											</div>
-										</div><!-- .col  -->
-									</div><!-- .row  -->
-								</div><!-- .container  -->
-							</div><!-- .team-profile  -->
 						</div>
-					</div><!-- .col  -->
-				</div><!-- .row  -->
+						@endif
+					@endforeach
+				</div>
 			</div><!-- .container  -->
 		</div><!-- .team-section  -->
 			
